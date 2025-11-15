@@ -32,9 +32,9 @@ function CreateJobForm() {
       }
       toast({description:'Job created successfully!'});
       queryClient.invalidateQueries({queryKey:['jobs']})
-       queryClient.invalidateQueries({ queryKey: ['stats'] });
-       queryClient.invalidateQueries({ queryKey: ['charts'] });
-       router.push('/jobs');
+      queryClient.invalidateQueries({ queryKey: ['stats'] });
+      queryClient.invalidateQueries({ queryKey: ['charts'] });
+      router.push('/jobs');
 
     }
   });
@@ -86,8 +86,12 @@ function CreateJobForm() {
             items={Object.values(JobMode)}
             labelText="job mode"
           />
-          <Button type="submit" className="self-end capitalize" disabled={isPending}>
-            create job
+          <Button
+            type="submit"
+            className="self-end capitalize"
+            disabled={isPending}
+          >
+            {isPending ? 'loading...' : 'create job'}
           </Button>
         </div>
       </form>
