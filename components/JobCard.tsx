@@ -1,6 +1,6 @@
-import React from 'react'
+import { JobType } from '@/utils/types';
 
-function JobCard() {
+function JobCard({job}:{job:JobType}) {
   return (
 	<h1 className='text-4xl'>JobCard</h1>
   )
