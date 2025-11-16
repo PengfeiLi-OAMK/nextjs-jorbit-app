@@ -21,13 +21,13 @@ function JobsList() {
   if (jobs.length === 0) {
     return <div>No jobs found.</div>;
   }
-  return <>
+  return (<div className="grid md:grid-cols-2 gap-8">
     {
       jobs.map((job)=>{
         return <JobCard key={job.id} job={job} />
       })
     }
-  </>;
+  </div>);
 }
 
 export default JobsList;
