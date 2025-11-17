@@ -16,6 +16,7 @@ type GetAllJobsActionTypes = {
 
 function authenticateAndRedirect(): string{
 	const{userId}=auth();
+	console.log('userId in actions:', userId);
 	if(!userId){
 		redirect('/');
 	}
@@ -110,6 +111,48 @@ export async function deleteJobAction(id: string):Promise<JobType | null> {
 
 	}catch (error) {
 		console.log('Error deleting job:', error);
+		return null;
+	}
+}
+export async function getSingleJobAction(id: string): Promise<JobType>{
+	const userId=authenticateAndRedirect();
+	let job:null|JobType= null;
+	try{
+		job= await prisma.job.findUnique({
+			where:{
+				id:id,
+				clerkId:userId,
+			}
+		});
+	}catch (error) {
+		console.log('Error fetching job:', error);
+		job= null;
+	}
+	if (!job) {
+        redirect('/jobs');
+    }
+  	return job;
+}
+
+export async function updateJobAction(
+  id: string,
+  values: CreateAndEditJobType
+): Promise<JobType | null> {
+	const userId=authenticateAndRedirect();
+	try{
+		const job:JobType=await prisma.job.update({
+			where:{
+				id:id,
+				clerkId:userId,
+			},
+			data:{
+				...values,
+			}
+		})
+		return job;
+
+	}catch (error) {
+		console.log('Error updating job:', error);
 		return null;
 	}
 }
