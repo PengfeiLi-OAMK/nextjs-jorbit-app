@@ -14,7 +14,7 @@ async function StatsPage() {
     queryFn:()=>getStatsAction(),
   });
   await queryClient.prefetchQuery({
-    queryKey:['chartsData'],
+    queryKey:['charts'],
     queryFn:()=>getChartsDataAction(),
   });
  

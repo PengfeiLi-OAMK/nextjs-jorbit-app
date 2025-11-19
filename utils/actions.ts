@@ -211,6 +211,7 @@ export async function getStatsAction(): Promise<{
 			}
 		}
 	)
+	console.log('Jobs fetched for charts data:', jobs);
 	let applicationsPerMonth = jobs.reduce((acc, job) => {
 		const date=dayjs(job.createdAt).format('MMM YY');
 		const existingEntry = acc.find(entry=>entry.date===date);
@@ -221,6 +222,7 @@ export async function getStatsAction(): Promise<{
 		}
         return acc;
 	},[] as Array<{ date: string; count: number }>);
+	console.log('Applications per month before sorting:', applicationsPerMonth);
     return applicationsPerMonth;
   }catch (error) {
     redirect('/jobs');

@@ -37,3 +37,4 @@ next-env.d.ts
 
 # seed database
 seed.js
+mock-data.json
