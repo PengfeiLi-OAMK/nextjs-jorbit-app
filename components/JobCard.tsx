@@ -36,7 +36,7 @@ function JobCard({ job }: { job: JobType }) {
           />
         </Badge>
       </CardContent>
-      <CardFooter className="flex gap-4">
+      <CardFooter className="flex gap-40">
         <Button asChild size="sm">
           <Link href={`/jobs/${job.id}`}>Edit</Link>
         </Button>

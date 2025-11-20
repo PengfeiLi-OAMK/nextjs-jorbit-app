@@ -16,7 +16,6 @@ type GetAllJobsActionTypes = {
 
 function authenticateAndRedirect(): string{
 	const{userId}=auth();
-	console.log('userId in actions:', userId);
 	if(!userId){
 		redirect('/');
 	}
@@ -51,7 +50,7 @@ export async function getAllJobsAction({
 }: GetAllJobsActionTypes): Promise<{
   jobs: JobType[];
   count: number;
-  page: number;
+//   page: number;
   totalPages: number;
 }> {
 	const userId=authenticateAndRedirect();
@@ -78,20 +77,28 @@ export async function getAllJobsAction({
 				status:jobStatus,
 			}
 		}
+		const skip=(page-1)*limit;
 		const jobs:JobType[]=await prisma.job.findMany({
 			where:whereClause,
+			skip,
+			take:limit,
 			orderBy:{
 				createdAt:'desc',
 			}
 		})
-		return {jobs,count:0,page:1,totalPages:1};
+		const count:number=await prisma.job.count({
+			where:whereClause,
+		});
+		//prevent totalPages from being 0
+		const totalPages = Math.max(1, Math.ceil(count / limit));
+		return {jobs,count,totalPages};
 
 	}catch (error) {
 		console.log('Error fetching jobs:', error);
 		return{
 			jobs:[],
 			count:0,
-			page:1,
+			// page:1,
 			totalPages:1,
 		}
 	}
@@ -222,7 +229,6 @@ export async function getStatsAction(): Promise<{
 		}
         return acc;
 	},[] as Array<{ date: string; count: number }>);
-	console.log('Applications per month before sorting:', applicationsPerMonth);
     return applicationsPerMonth;
   }catch (error) {
     redirect('/jobs');
