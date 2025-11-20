@@ -34,6 +34,7 @@ function ComplexButtonContainer({ currentPage, totalPages }: ButtonContainerProp
     const addPageButton = ({ page, activeClass }: ButtonProps) => {
 	 return (
      <Button
+       key={page}
        size="icon"
        variant={activeClass ? 'default' : 'outline'}
        onClick={() => handlePageChange(page)}
@@ -83,7 +84,7 @@ function ComplexButtonContainer({ currentPage, totalPages }: ButtonContainerProp
 	 // dots after current page
 	  if (currentPage < totalPages - 2) {
       pageButtons.push(
-        <Button size="icon" variant="outline" key="dots-1">
+        <Button size="icon" variant="outline" key="dots-2">
           ...
         </Button>
       );
