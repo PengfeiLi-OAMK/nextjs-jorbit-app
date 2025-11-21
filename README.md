@@ -1,6 +1,7 @@
 # Jorbit 🚀
 
 **Jorbit** is a modern, full-stack Job Application Tracking System designed to help job seekers organize, track, and analyze their job hunt progress. Built with the latest **Next.js 14 App Router** architecture, it leverages server-side rendering and robust database management to provide a seamless user experience.
+<img width="1916" height="885" alt="a2e4c7a9-7720-4f02-818f-03c80906b164" src="https://github.com/user-attachments/assets/291f8715-0f00-437c-bc89-3e1e9ad3cf85" />
 
 
 ## ✨ Key Features
@@ -90,9 +91,18 @@ Generate the Prisma client and push the schema to your database:
 npx prisma generate
 npx prisma db push
 ```
+
 ### 5. Run the Development Server
 ```Bash
 
 npm run dev
 Open http://localhost:3000 with your browser to see the result.
 ```
+## ✨ More Screenshots
+
+<img width="1896" height="813" alt="26145934-9e10-47bc-9217-9e44360eb8b1" src="https://github.com/user-attachments/assets/9b18d828-4109-4170-8432-e337c1665c94" />
+
+<img width="1878" height="780" alt="8441bb19-39cd-48d9-810b-d08d1c4aff95" src="https://github.com/user-attachments/assets/5e4421d4-c220-435e-8cc8-93100969c30e" />
+
+<img width="1481" height="804" alt="090176ec-aef7-4aef-91c2-599ceed0560d" src="https://github.com/user-attachments/assets/6082543e-fe22-4d1a-8cfb-9f08d7ed109b" />
+
