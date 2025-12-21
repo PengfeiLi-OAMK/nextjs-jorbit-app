@@ -15,29 +15,28 @@ import {
 } from '@/components/ui/form';
 import { Input } from './ui/input';
 
-
-type CustomFormFieldProps ={
-	  name: string;
-	  control: Control<any>;
-}
-export function CustomFormField({name, control}: CustomFormFieldProps) {
-	return(
-		<FormField
-		   	control={control}
-			name={name}
-			render={({field})=>{
-                return (
-                  <FormItem>
-                    <FormLabel>{name}</FormLabel>
-                    <FormControl>
-                      <Input placeholder="shadcn" {...field} />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                );
-			}}
-		/>
-	)
+type CustomFormFieldProps = {
+  name: string;
+  control: Control<any>;
+};
+export function CustomFormField({ name, control }: CustomFormFieldProps) {
+  return (
+    <FormField
+      control={control}
+      name={name}
+      render={({ field }) => {
+        return (
+          <FormItem>
+            <FormLabel>{name}</FormLabel>
+            <FormControl>
+              <Input placeholder={`Write ${name} here`} {...field} />
+            </FormControl>
+            <FormMessage />
+          </FormItem>
+        );
+      }}
+    />
+  );
 }
 
 type CustomFormSelectProps = {
@@ -52,7 +51,7 @@ export function CustomFormSelect({
   items,
   labelText,
 }: CustomFormSelectProps) {
-	return (
+  return (
     <FormField
       control={control}
       name={name}
@@ -64,14 +63,13 @@ export function CustomFormSelect({
               <SelectTrigger>
                 <SelectValue />
               </SelectTrigger>
-			  <SelectContent>
-				{items.map((item) => (
-					<SelectItem key={item} value={item}>
-					  {item}
-					</SelectItem>
-				))}
-			  </SelectContent>
-
+              <SelectContent>
+                {items.map((item) => (
+                  <SelectItem key={item} value={item}>
+                    {item}
+                  </SelectItem>
+                ))}
+              </SelectContent>
             </Select>
           </FormControl>
         </FormItem>
